@@ -1,0 +1,6 @@
+import { Link } from 'react-router-dom'
+import { useRecipes } from '../context/RecipeContext'
+export default function RecipeCard({ recipe }) {
+  const { favorites, toggleFavorite } = useRecipes(); const saved = favorites.some(item => item.id === recipe.id)
+  return <article className="recipe-card"><Link className="card-image" to={`/recipes/${recipe.id}`}><img src={recipe.image} alt={recipe.title} loading="lazy" onError={event => { event.currentTarget.src = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80' }} /><span className="category-pill">{recipe.category}</span></Link><button className={`heart-button ${saved ? 'is-favorite' : ''}`} onClick={() => toggleFavorite(recipe)} aria-label={saved ? 'Remove from favorites' : 'Add to favorites'}>{saved ? '♥' : '♡'}</button><div className="card-content"><div className="card-meta"><span>{recipe.prepTime || 15} min prep</span><span className="meta-dot">·</span><span>{recipe.difficulty || 'Easy'}</span></div><Link className="card-title" to={`/recipes/${recipe.id}`}>{recipe.title}</Link><p>{recipe.description}</p><Link className="card-link" to={`/recipes/${recipe.id}`}>View recipe <span>↗</span></Link></div></article>
+}

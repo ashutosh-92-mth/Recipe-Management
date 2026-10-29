@@ -1,0 +1,2 @@
+import { NavLink, Link } from 'react-router-dom'
+export default function Navbar() { return <header className="site-header"><div className="nav-inner"><Link className="brand" to="/"><span className="brand-mark">🥭</span><span>recipe<span className="brand-accent">book</span></span></Link><nav aria-label="Main navigation"><NavLink to="/recipes">Explore</NavLink><NavLink to="/favorites">Favorites</NavLink><Link className="button button-primary nav-add" to="/add-recipe"><span aria-hidden="true">＋</span> Add recipe</Link></nav></div></header> }
